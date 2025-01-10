@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Price Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Property Price Prediction</h2>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="square_feet">Square Feet:</label>
+                <input type="number" class="form-control" id="square_feet" name="square_feet" required>
+            </div>
+            <div class="form-group">
+                <label for="bedrooms">Bedrooms:</label>
+                <input type="number" class="form-control" id="bedrooms" name="bedrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="bathrooms">Bathrooms:</label>
+                <input type="number" class="form-control" id="bathrooms" name="bathrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="neighborhood">Neighborhood (0 = Rural, 1 = Suburb, 2 = Urban):</label>
+                <input type="number" class="form-control" id="neighborhood" name="neighborhood" min="0" max="2" required>
+            </div>
+            <div class="form-group">
+                <label for="year_built">Year Built:</label>
+                <input type="number" class="form-control" id="year_built" name="year_built" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict Price</button>
+        </form>
+
+        <h3 class="mt-4">
+            {% if prediction_text %}
+                {{ prediction_text }}
+            {% endif %}
+        </h3>
+    </div>
+
+    <!-- Bootstrap JS (optional for UI styling) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
